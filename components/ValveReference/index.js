@@ -1,4 +1,3 @@
-// components/ValveReference/index.js
 'use client'
 
 import React, { useState } from 'react'
@@ -7,88 +6,76 @@ import FilterControls from './FilterControls'
 import ResultsTable from './ResultsTable'
 
 export default function ValveReference() {
-  // State for main filters
   const [implantMethod, setImplantMethod] = useState("Surgical")
   const [position, setPosition] = useState("Aortic")
   const [type, setType] = useState("all")
   const [size, setSize] = useState("all")
   const [searchTerm, setSearchTerm] = useState("")
-
-  // State for loading indicators
   const [isLoading, setIsLoading] = useState(false)
-  const [loadingType, setLoadingType] = useState(null) // 'data' or 'filter'
 
-  // Get current dataset based on implant method and position
   const currentData = valveData[implantMethod]?.[position] || []
 
-  // Handler for implant method changes
-  const handleImplantMethodChange = async (newMethod) => {
-    setLoadingType('data');
-    setIsLoading(true);
+  const handleDataChange = async (callback) => {
+    setIsLoading(true)
     try {
-      setImplantMethod(newMethod);
-      // Reset filters when changing major categories
-      setSize("all");
-      setType("all");
+      await callback()
     } finally {
-      // Add slight delay for loading state visibility
-      setTimeout(() => {
-        setIsLoading(false);
-        setLoadingType(null);
-      }, 500);
+      setTimeout(() => setIsLoading(false), 300)
     }
-  };
+  }
 
-  // Handler for position changes
-  const handlePositionChange = async (newPosition) => {
-    setLoadingType('data');
-    setIsLoading(true);
-    try {
-      setPosition(newPosition);
-      // Reset filters when changing major categories
-      setSize("all");
-      setType("all");
-    } finally {
-      setTimeout(() => {
-        setIsLoading(false);
-        setLoadingType(null);
-      }, 500);
-    }
-  };
+  const handleImplantMethodChange = (newMethod) => {
+    handleDataChange(() => {
+      setImplantMethod(newMethod)
+      setSize("all")
+      setType("all")
+    })
+  }
 
-  // Filter the data based on all criteria
+  const handlePositionChange = (newPosition) => {
+    handleDataChange(() => {
+      setPosition(newPosition)
+      setSize("all")
+      setType("all")
+    })
+  }
+
   const filteredData = currentData.filter(valve => {
-    // Handle type/deployment based on implant method
     if (type !== "all") {
       if (implantMethod === "Surgical") {
-        if (valve.type !== type) return false;
+        if (valve.type !== type) return false
       } else {
-        if (valve.deployment !== type) return false;
+        if (valve.deployment !== type) return false
       }
     }
-    // Filter by size
-    if (size !== "all" && valve.size !== size) return false;
-    // Filter by search term
-    if (searchTerm && !valve.valve.toLowerCase().includes(searchTerm.toLowerCase())) return false;
-    return true;
-  });
+    if (size !== "all" && valve.size !== size) return false
+    if (searchTerm && !valve.valve.toLowerCase().includes(searchTerm.toLowerCase())) return false
+    return true
+  })
 
   return (
-    <div className="min-h-screen bg-gradient-to-b from-gray-50 to-white">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
-        <div className="bg-white rounded-xl shadow-sm border border-gray-200">
-          {/* Header */}
-          <div className="px-6 py-4 border-b border-gray-200">
+    <div className="min-h-screen bg-gradient-to-b from-gray-50 to-white touch-pan-y">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4 sm:py-8 safe-bottom">
+        <div className="bg-white rounded-xl shadow-sm border border-gray-200 overflow-hidden">
+          {/* Header with subtle animation */}
+          <div className="px-6 py-4 border-b border-gray-200 animate-fade-in">
             <h1 className="text-xl font-semibold text-gray-900">
-              Prosthetic Heart Valve Reference Data
+              Prosthetic Valve Reference
             </h1>
             <p className="mt-1 text-sm text-gray-500">
-              Reference values for prosthetic heart valves, based on the <a href="https://onlinejase.com/article/S0894-7317(23)00533-3/fulltext" target='_blank'>January 2024 ASE Guidelines</a>
-            </p>
-          </div>
+  Doppler reference values for prosthetic heart valves, based on the{' '}
+  <a 
+    href="https://onlinejase.com/article/S0894-7317(23)00533-3/fulltext" 
+    target="_blank"
+    rel="noopener noreferrer"
+    className="text-blue-600 hover:bg-blue-50 px-1 rounded transition-all duration-150"
+  >
+    January 2024 JASE Guidelines.
+  </a>
+</p>          </div>
 
-          {/* Filter Controls - with loading state */}
-          <div className={isLoading ? "opacity-50 pointer-events-none" : ""}>
+          {/* Controls with loading state */}
+          <div className={`transition-opacity duration-200 ${isLoading ? 'opacity-50' : ''}`}>
             <FilterControls
               implantMethod={implantMethod}
               position={position}
@@ -105,7 +92,7 @@ export default function ValveReference() {
             />
           </div>
 
-          {/* Results section with loading states */}
+          {/* Results with loading state */}
           <div className="relative">
             {isLoading && (
               <div className="absolute inset-0 bg-white bg-opacity-75 z-10 flex items-center justify-center">
@@ -121,11 +108,11 @@ export default function ValveReference() {
           </div>
 
           {/* Results count */}
-          <div className="px-6 py-3 border-t text-sm text-gray-500">
+          <div className="px-6 py-3 border-t text-sm text-gray-500 animate-fade-in">
             Showing {filteredData.length} results
           </div>
         </div>
       </div>
     </div>
-  );
+  )
 }
