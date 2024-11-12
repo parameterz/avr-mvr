@@ -82,10 +82,19 @@ export default function ValveReference() {
             <h1 className="text-xl font-semibold text-gray-900">
               Prosthetic Heart Valve Reference Data
             </h1>
-            <p className="mt-1 text-sm text-gray-500">
-              Reference values for prosthetic heart valves, based on the <a href="https://onlinejase.com/article/S0894-7317(23)00533-3/fulltext" target='_blank'>January 2024 ASE Guidelines</a>
-            </p>
-          </div>
+            // in components/ValveReference/index.js
+
+<p className="mt-1 text-sm text-gray-500">
+  Doppler reference values for prosthetic heart valves, based on the{' '}
+  <a 
+    href="https://onlinejase.com/article/S0894-7317(23)00533-3/fulltext" 
+    target="_blank"
+    rel="noopener noreferrer"
+    className="text-blue-600 hover:bg-blue-50 px-1 rounded transition-all duration-150"
+  >
+    January 2024 JASE Guidelines.
+  </a>
+</p>          </div>
 
           {/* Filter Controls - with loading state */}
           <div className={isLoading ? "opacity-50 pointer-events-none" : ""}>
