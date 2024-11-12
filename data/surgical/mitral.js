@@ -1,6 +1,6 @@
 // mitralValveData.js
 
-export const mitralValveData = [
+export const surgicalMitralValveData = [
     // Abbott
     {
       valve: "Abbott Epic",

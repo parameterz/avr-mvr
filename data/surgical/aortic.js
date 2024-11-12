@@ -1,6 +1,4 @@
-// aorticValveData.js
-
-export const aorticValveData = [
+export const surgicalAorticValveData = [
     // Abbott Epic
     {
       valve: "Abbott Epic Stented porcine leaflets",

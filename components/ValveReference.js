@@ -2,8 +2,8 @@
 'use client'
 
 import React, { useState } from 'react'
-import { mitralValveData } from '@/data/mitralValveData'
-import { aorticValveData } from '@/data/aorticValveData'
+import { mitralValveData } from '@/data/surgical/mitral'
+import { aorticValveData } from '@/data/surgical/aortic'
 
 // Helper function to calculate statistical ranges (±2 SD)
 const calculateRange = (value) => {
