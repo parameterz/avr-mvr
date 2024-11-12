@@ -80,10 +80,10 @@ export default function ValveReference() {
           {/* Header */}
           <div className="px-6 py-4 border-b border-gray-200">
             <h1 className="text-xl font-semibold text-gray-900">
-              Prosthetic Valve Reference
+              Prosthetic Heart Valve Reference Data
             </h1>
             <p className="mt-1 text-sm text-gray-500">
-              Reference values for prosthetic heart valves
+              Reference values for prosthetic heart valves, based on the <a href="https://onlinejase.com/article/S0894-7317(23)00533-3/fulltext" target='_blank'>January 2024 ASE Guidelines</a>
             </p>
           </div>
 
