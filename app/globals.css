@@ -2,20 +2,25 @@
 @tailwind components;
 @tailwind utilities;
 
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
-}
-
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
+@layer utilities {
+  .touch-feedback {
+    -webkit-tap-highlight-color: transparent;
+    touch-action: manipulation;
+  }
+  
+  .safe-bottom {
+    padding-bottom: env(safe-area-inset-bottom);
   }
 }
 
-body {
-  color: var(--foreground);
-  background: var(--background);
-  font-family: Arial, Helvetica, sans-serif;
+/* Optional: Improve mobile scrolling */
+* {
+  -webkit-overflow-scrolling: touch;
+}
+
+/* Smooth transitions */
+.transition-expand {
+  transition-property: height, opacity;
+  transition-duration: 200ms;
+  transition-timing-function: ease-out;
 }
