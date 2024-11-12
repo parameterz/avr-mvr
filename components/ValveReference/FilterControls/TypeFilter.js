@@ -1,6 +1,4 @@
 // components/ValveReference/FilterControls/TypeFilter.js
-import React from 'react'
-
 export default function TypeFilter({ value, onChange, implantMethod }) {
   const getTypeOptions = () => {
     if (implantMethod === "Surgical") {
