@@ -2,7 +2,11 @@ import './globals.css'
 
 export const metadata = {
   title: 'Prosthetic Heart Valve Reference Data',
-  description: 'Doppler reference values for prosthetic heart valves',
+  description: 'JASE Guideline Doppler reference values for prosthetic heart valves',
+  icons: {
+    icon: '/favicon.ico',
+  },
+
 }
 
 export default function RootLayout({ children }) {
