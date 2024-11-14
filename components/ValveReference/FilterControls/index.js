@@ -6,8 +6,8 @@ import TypeFilter from './TypeFilter'
 import SizeFilter from './SizeFilter'
 
 export default function FilterControls({
-  implantMethod,
   position,
+  implantMethod,
   type,
   size,
   searchTerm,
@@ -24,14 +24,6 @@ export default function FilterControls({
     <div className="space-y-4 p-4 md:space-y-0 md:grid md:grid-cols-2 lg:grid-cols-5 md:gap-4 lg:gap-6 md:p-6 bg-gray-50 border-b border-gray-200">
       {/* Primary filters - full width on mobile, half width on medium screens */}
       <div className="md:col-span-1">
-        <ImplantFilter 
-          value={implantMethod}
-          onChange={onImplantMethodChange}
-          disabled={disabled}
-        />
-      </div>
-      
-      <div className="md:col-span-1">
         <PositionFilter 
           value={position}
           onChange={onPositionChange}
@@ -39,6 +31,14 @@ export default function FilterControls({
         />
       </div>
 
+      <div className="md:col-span-1">
+        <ImplantFilter 
+          value={implantMethod}
+          onChange={onImplantMethodChange}
+          disabled={disabled}
+        />
+      </div>
+      
       {/* Secondary filters */}
       <div className="lg:col-span-1">
         <TypeFilter 

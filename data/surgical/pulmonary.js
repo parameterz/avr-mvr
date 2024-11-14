@@ -3,7 +3,7 @@ export const surgicalPulmonaryValveData = [
   // Generic threshold for all bioprosthetic valves
   {
     valve: "Bioprosthetic valves",
-    type: "tissue",
+    type: "Tissue",
     size: "all",
     peakGradient: "< 15",
     peakVelocity: "< 2.2",
@@ -15,7 +15,7 @@ export const surgicalPulmonaryValveData = [
   // St. Jude
   {
     valve: "St. Jude",
-    type: "mechanical",
+    type: "Mechanical",
     size: "21",
     peakGradient: "20 (19-21)",
     meanGradient: "12 (11-13)",
@@ -25,7 +25,7 @@ export const surgicalPulmonaryValveData = [
   },
   {
     valve: "St. Jude",
-    type: "mechanical",
+    type: "Mechanical",
     size: "23",
     peakGradient: "20 (7-35)",
     meanGradient: "11 (4-20)",
@@ -35,7 +35,7 @@ export const surgicalPulmonaryValveData = [
   },
   {
     valve: "St. Jude",
-    type: "mechanical",
+    type: "Mechanical",
     size: "25",
     peakGradient: "18 ± 7.5",
     meanGradient: "11 ± 6",
@@ -45,7 +45,7 @@ export const surgicalPulmonaryValveData = [
   },
   {
     valve: "St. Jude",
-    type: "mechanical",
+    type: "Mechanical",
     size: "27",
     peakGradient: "15 (6-30)",
     meanGradient: "6 (3-18)",
@@ -55,7 +55,7 @@ export const surgicalPulmonaryValveData = [
   },
   {
     valve: "St. Jude",
-    type: "mechanical",
+    type: "Mechanical",
     size: "31",
     peakGradient: "14",
     meanGradient: "7",
@@ -67,7 +67,7 @@ export const surgicalPulmonaryValveData = [
   // Carbomedics
   {
     valve: "Carbomedics",
-    type: "mechanical",
+    type: "Mechanical",
     size: "23",
     peakGradient: "19 (17-20)",
     meanGradient: "12",
@@ -77,7 +77,7 @@ export const surgicalPulmonaryValveData = [
   },
   {
     valve: "Carbomedics",
-    type: "mechanical",
+    type: "Mechanical",
     size: "25",
     peakGradient: "20 (11-30)",
     meanGradient: "11 (5-33)",
@@ -87,7 +87,7 @@ export const surgicalPulmonaryValveData = [
   },
   {
     valve: "Carbomedics",
-    type: "mechanical",
+    type: "Mechanical",
     size: "27",
     peakGradient: "19 (10-28)",
     meanGradient: "10 (6-14)",
@@ -97,7 +97,7 @@ export const surgicalPulmonaryValveData = [
   },
   {
     valve: "Carbomedics",
-    type: "mechanical",
+    type: "Mechanical",
     size: "29",
     peakGradient: "14",
     meanGradient: "7",
@@ -109,7 +109,7 @@ export const surgicalPulmonaryValveData = [
   // On-X
   {
     valve: "On-X",
-    type: "mechanical",
+    type: "Mechanical",
     size: "23",
     peakGradient: "20 (7-36)",
     meanGradient: "12 (4-22)",
@@ -119,7 +119,7 @@ export const surgicalPulmonaryValveData = [
   },
   {
     valve: "On-X",
-    type: "mechanical",
+    type: "Mechanical",
     size: "25",
     peakGradient: "17 (7-24)",
     meanGradient: "10 (3-13)",
@@ -129,7 +129,7 @@ export const surgicalPulmonaryValveData = [
   },
   {
     valve: "On-X",
-    type: "mechanical",
+    type: "Mechanical",
     size: "27",
     peakGradient: "23",
     meanGradient: "13",
@@ -139,7 +139,7 @@ export const surgicalPulmonaryValveData = [
   },
   {
     valve: "On-X",
-    type: "mechanical",
+    type: "Mechanical",
     size: "29",
     peakGradient: "20 (18-22)",
     meanGradient: "12 ± 1",

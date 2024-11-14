@@ -2,7 +2,7 @@
 export const transcatheterPulmonaryValveData = [
     {
       valve: "Melody",
-      deployment: "transcatheter",
+      deployment: "balloon-expandable",
       size: "16",
       peakGradient: "≤ 20",
       meanGradient: null,
@@ -12,7 +12,7 @@ export const transcatheterPulmonaryValveData = [
     },
     {
       valve: "Melody",
-      deployment: "transcatheter",
+      deployment: "balloon-expandable",
       size: "18",
       peakGradient: "≤ 22",
       meanGradient: null,
@@ -22,7 +22,7 @@ export const transcatheterPulmonaryValveData = [
     },
     {
       valve: "SAPIEN",
-      deployment: "transcatheter",
+      deployment: "balloon-expandable",
       size: "20",
       peakGradient: null,
       meanGradient: "16 ± 5",
@@ -32,7 +32,7 @@ export const transcatheterPulmonaryValveData = [
     },
     {
       valve: "SAPIEN",
-      deployment: "transcatheter",
+      deployment: "balloon-expandable",
       size: "23",
       peakGradient: null,
       meanGradient: "11 (8-17)",
@@ -42,7 +42,7 @@ export const transcatheterPulmonaryValveData = [
     },
     {
       valve: "SAPIEN",
-      deployment: "transcatheter",
+      deployment: "balloon-expandable",
       size: "26",
       peakGradient: null,
       meanGradient: "9.5 (4.9-14.5)",
@@ -52,7 +52,7 @@ export const transcatheterPulmonaryValveData = [
     },
     {
       valve: "SAPIEN",
-      deployment: "transcatheter",
+      deployment: "balloon-expandable",
       size: "29",
       peakGradient: null,
       meanGradient: "10.4 (5.9-15.5)",
