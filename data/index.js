@@ -3,8 +3,8 @@
 // Import surgical data
 import { surgicalAorticValveData } from './surgical/aortic'
 import { surgicalMitralValveData } from './surgical/mitral'
-// import { surgicalTricuspidValveData } from './surgical/tricuspid'  // When ready
-import { surgicalPulmonaryValveData } from './surgical/pulmonary'  // When ready
+import { surgicalTricuspidValveData } from './surgical/tricuspid'  
+import { surgicalPulmonaryValveData } from './surgical/pulmonary'  
 
 // Import transcatheter data
 import { transcatheterAorticValveData } from './transcatheter/aortic'
@@ -17,7 +17,7 @@ export const valveData = {
   Surgical: {
     Aortic: surgicalAorticValveData,
     Mitral: surgicalMitralValveData,
-    // Tricuspid: surgicalTricuspidValveData,  // When ready
+    Tricuspid: surgicalTricuspidValveData,
     Pulmonary: surgicalPulmonaryValveData   
   },
   Transcatheter: {
@@ -30,4 +30,10 @@ export const valveData = {
 
 // Export useful constants
 export const IMPLANT_METHODS = ['Surgical', 'Transcatheter'];
-export const VALVE_POSITIONS = ['Aortic', 'Mitral', 'Pulmonary']; // Add others when ready
+export const VALVE_POSITIONS = ['Aortic', 'Mitral', 'Tricuspid', 'Pulmonary']; 
+export const AVAILABLE_IMPLANTS = {
+  Aortic: ['Surgical', 'Transcatheter'],
+  Mitral: ['Surgical'],
+  Tricuspid: ['Surgical'],
+  Pulmonary: ['Surgical', 'Transcatheter']
+};

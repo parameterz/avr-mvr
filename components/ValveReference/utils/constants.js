@@ -26,7 +26,19 @@ export const getColumns = (implantMethod, position) => {
         { key: 'pht', label: 'PHT', align: 'right', unit: 'ms' },
         { key: 'eoa', label: 'EOA', align: 'right', unit: 'cm²' }
       ];
-    } else {
+    } else if (position === "Tricuspid") {
+      return [
+        ...baseColumns,
+        { key: 'type', label: 'Type', align: 'center' },
+        { key: 'eVelocity', label: 'Peak E Velocity', align: 'right', unit: 'm/s' },
+        { key: 'meanGradient', label: 'Mean Gradient', align: 'right', unit: 'mmHg' },
+        { key: 'vtiTvp', label: 'VTI', align: 'right', unit: 'cm' },
+        { key: 'vtiRatio', label: 'Dimensionless Index (TVp/LVOT)', align: 'right', unit: '' },
+        { key: 'pht', label: 'PHT', align: 'right', unit: 'ms' },
+        { key: 'eoaCon', label: 'EOA', align: 'right', unit: 'cm²' },
+        { key: 'iEoaCon', label: 'Indexed EOA', align: 'right', unit: 'cm²/m²' },
+      ];
+    } else { //aortic
       return [
         ...baseColumns,
         { key: 'type', label: 'Type', align: 'center' },
