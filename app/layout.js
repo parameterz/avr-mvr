@@ -1,7 +1,7 @@
 import './globals.css'
 
 export const metadata = {
-  title: 'Prosthetic Heart Valve Reference Data',
+  title: 'PHVDR: Prosthetic Heart Valve Doppler Reference',
   description: 'JASE Guideline Doppler reference values for prosthetic heart valves',
   icons: {
     icon: '/favicon.ico',

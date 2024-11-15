@@ -64,7 +64,7 @@ export default function ValveReference() {
           {/* Header with subtle animation */}
           <div className="px-6 py-4 border-b border-gray-200 animate-fade-in">
             <h1 className="text-xl font-semibold text-gray-900">
-              Prosthetic Valve Reference
+              Prosthetic Heart Valve Doppler Reference
             </h1>
             <p className="mt-1 text-sm text-gray-500">
               Doppler reference values for prosthetic heart valves, based on the{" "}
