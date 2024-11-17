@@ -1,8 +1,9 @@
+//components/ValveReference/ResultsTable/index.js
 'use client'
 
 import React, { useState } from 'react';
 import { getColumns } from '../utils/constants';
-import { calculateRange } from '../utils/calculations';
+import { calculateEOARanges } from '../utils/calculations';
 import ValveRow from './ValveRow';
 
 // Mobile card component with touch optimizations
@@ -10,6 +11,34 @@ const MobileValveCard = ({ valve, implantMethod, position, onExpand, isExpanded 
   const [isTouched, setIsTouched] = useState(false);
   const columns = getColumns(implantMethod, position);
   
+  const renderEOARanges = (eoaValue) => {
+    const ranges = calculateEOARanges(eoaValue);
+    if (!ranges) return null;
+
+    return (
+      <div className="grid grid-cols-1 gap-3">
+        <div className="bg-white rounded-lg shadow-sm p-3">
+          <p className="text-sm text-gray-600 mb-1">Normal Range (±1 SD)</p>
+          <p className="font-medium text-green-600">
+            {ranges.normalRange.low} - {ranges.normalRange.high} cm²
+          </p>
+        </div>
+        <div className="bg-white rounded-lg shadow-sm p-3">
+          <p className="text-sm text-gray-600 mb-1">Possible Stenosis (-1 to -2 SD)</p>
+          <p className="font-medium text-yellow-600">
+            {ranges.possibleStenosis.low} - {ranges.possibleStenosis.high} cm²
+          </p>
+        </div>
+        <div className="bg-white rounded-lg shadow-sm p-3">
+          <p className="text-sm text-gray-600 mb-1">Significant Stenosis</p>
+          <p className="font-medium text-red-600">
+            Less than {ranges.significantStenosis.value} cm²
+          </p>
+        </div>
+      </div>
+    );
+  };
+
   return (
     <div 
       className={`bg-white p-4 border-b transition-all duration-150 touch-feedback
@@ -53,42 +82,23 @@ const MobileValveCard = ({ valve, implantMethod, position, onExpand, isExpanded 
         })}
       </dl>
 
-      {/* Expanded View */}
-      {isExpanded && (
+      {/* Expanded View - EOA Ranges Only */}
+      {isExpanded && valve.eoa && (
         <div 
           className="mt-4 pt-4 border-t animate-fade-in"
           onClick={(e) => e.stopPropagation()} // Prevent collapse when interacting
         >
           <h4 className="text-sm font-medium text-blue-900 mb-3">
-            Statistical Ranges (95% of values)
+            EOA Reference Ranges
           </h4>
-          <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
-            {columns.map(column => {
-              if (column.key === 'valve' || column.key === 'size' || 
-                  column.key === 'type' || column.key === 'deployment') return null;
-
-              const range = calculateRange(valve[column.key]);
-              if (!range) return null;
-
-              return (
-                <div key={column.key} 
-                  className="bg-blue-50 p-3 rounded-lg transition-transform active:scale-98"
-                >
-                  <div className="text-sm text-gray-600 mb-1">{column.label}</div>
-                  <div className="font-medium">
-                    {range.low} - {range.high} {column.unit}
-                  </div>
-                </div>
-              );
-            })}
-          </div>
+          {renderEOARanges(valve.eoa)}
         </div>
       )}
     </div>
   );
 };
 
-// Main ResultsTable component
+// Main ResultsTable component remains the same
 export default function ResultsTable({ data, implantMethod, position }) {
   const [expandedId, setExpandedId] = useState(null);
 
@@ -116,7 +126,7 @@ export default function ResultsTable({ data, implantMethod, position }) {
         </div>
       </div>
 
-      {/* Desktop View */}
+      {/* Desktop View - unchanged */}
       <div className="hidden md:block overflow-x-auto overscroll-x-contain">
         <table className="w-full">
           <thead>
