@@ -2,93 +2,9 @@
 
 import React, { useState } from 'react';
 import { getColumns } from '../utils/constants';
-import { calculateRange } from '../utils/calculations';
+import MobileValveCard from './MobileValveCard';
 import ValveRow from './ValveRow';
 
-// Mobile card component with touch optimizations
-const MobileValveCard = ({ valve, implantMethod, position, onExpand, isExpanded }) => {
-  const [isTouched, setIsTouched] = useState(false);
-  const columns = getColumns(implantMethod, position);
-  
-  return (
-    <div 
-      className={`bg-white p-4 border-b transition-all duration-150 touch-feedback
-        ${isTouched ? 'bg-gray-50' : ''}
-        active:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-blue-500`}
-      onTouchStart={() => setIsTouched(true)}
-      onTouchEnd={() => {
-        setIsTouched(false);
-        onExpand();
-      }}
-      onClick={onExpand}
-      role="button"
-      tabIndex={0}
-      aria-expanded={isExpanded}
-    >
-      {/* Card Header */}
-      <div className="flex justify-between items-start">
-        <h3 className="font-medium text-gray-900 leading-tight">{valve.valve}</h3>
-        <span className="ml-2 px-2 py-1 bg-gray-100 text-sm font-medium rounded-full text-gray-600">
-          {valve.size} mm
-        </span>
-      </div>
-
-      {/* Type/Deployment Info */}
-      <div className="mt-2 text-sm text-gray-500">
-        {implantMethod === "Surgical" ? valve.type : valve.deployment}
-      </div>
-
-      {/* Measurements Grid */}
-      <dl className="mt-3 grid grid-cols-2 gap-x-4 gap-y-2 sm:grid-cols-3">
-        {columns.map(column => {
-          if (column.key === 'valve' || column.key === 'size' || 
-              column.key === 'type' || column.key === 'deployment') return null;
-
-          return valve[column.key] ? (
-            <div key={column.key} className="text-sm">
-              <dt className="text-gray-500">{column.label}</dt>
-              <dd className="font-medium mt-0.5">{valve[column.key]}</dd>
-            </div>
-          ) : null;
-        })}
-      </dl>
-
-      {/* Expanded View */}
-      {isExpanded && (
-        <div 
-          className="mt-4 pt-4 border-t animate-fade-in"
-          onClick={(e) => e.stopPropagation()} // Prevent collapse when interacting
-        >
-          <h4 className="text-sm font-medium text-blue-900 mb-3">
-            Statistical Ranges (95% of values)
-          </h4>
-          <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
-            {columns.map(column => {
-              if (column.key === 'valve' || column.key === 'size' || 
-                  column.key === 'type' || column.key === 'deployment') return null;
-
-              const range = calculateRange(valve[column.key]);
-              if (!range) return null;
-
-              return (
-                <div key={column.key} 
-                  className="bg-blue-50 p-3 rounded-lg transition-transform active:scale-98"
-                >
-                  <div className="text-sm text-gray-600 mb-1">{column.label}</div>
-                  <div className="font-medium">
-                    {range.low} - {range.high} {column.unit}
-                  </div>
-                </div>
-              );
-            })}
-          </div>
-        </div>
-      )}
-    </div>
-  );
-};
-
-// Main ResultsTable component
 export default function ResultsTable({ data, implantMethod, position }) {
   const [expandedId, setExpandedId] = useState(null);
 
