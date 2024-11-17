@@ -77,6 +77,9 @@ export default function ValveReference() {
                 January 2024 JASE Guidelines.
               </a>
             </p>{" "}
+            <p className="mt-1 text-sm text-gray-500">
+              Data are expressed as mean ± SD or as median (IQR).
+            </p>
           </div>
           {/* Controls with loading state */}
           <div
@@ -131,7 +134,7 @@ export default function ValveReference() {
                 </a>
               </div>
               <div className="text-gray-500">
-                Last updated: November 15 2024
+                Last updated: November 16 2024
               </div>
             </div>
           </div>
