@@ -35,8 +35,8 @@ export const getColumns = (implantMethod, position) => {
         { key: 'vtiTvp', label: 'VTI', align: 'right', unit: 'cm' },
         { key: 'vtiRatio', label: 'Dimensionless Index (TVp/LVOT)', align: 'right', unit: '' },
         { key: 'pht', label: 'PHT', align: 'right', unit: 'ms' },
-        { key: 'eoaCon', label: 'EOA', align: 'right', unit: 'cm²' },
-        { key: 'iEoaCon', label: 'Indexed EOA', align: 'right', unit: 'cm²/m²' },
+        { key: 'eoa', label: 'EOA', align: 'right', unit: 'cm²' },
+        { key: 'ieoa', label: 'Indexed EOA', align: 'right', unit: 'cm²/m²' },
       ];
     } else { //aortic
       return [
