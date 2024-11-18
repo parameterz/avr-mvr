@@ -134,7 +134,7 @@ export default function ValveReference() {
                 </a>
               </div>
               <div className="text-gray-500">
-                Last updated: November 16 2024
+                Last updated: November 17 2024
               </div>
             </div>
           </div>
